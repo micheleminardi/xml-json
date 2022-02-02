@@ -9,7 +9,7 @@ fs.readFile(__dirname + "/update.xml", function (err, data) {
     jso = result; //jso rappresenta i dati json
 
     //Effettuo una modifica
-    console.log((jso["covid-19"].pazienti[0].paziente[0].nome[0] = "michele"));
+    jso["covid-19"].pazienti[0].paziente[0].nome[0] = "michele")
 
     //Risalvo il contenuto in xml sul file prova.xml
     saveIt();
