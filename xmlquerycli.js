@@ -8,7 +8,7 @@ var parser = new xml2js.Parser();
 datascelta = myArgs[0];
 
 //Carico il file
-fs.readFile(__dirname + "/update.xml", function (err, data) {
+fs.readFile(myArgs[1], function (err, data) {
   parser.parseString(data, function (err, result) {
     jso = result; //jso rappresenta i dati json
 
@@ -32,7 +32,7 @@ fs.readFile(__dirname + "/update.xml", function (err, data) {
     function saveIt() {
       var builder = new xml2js.Builder();
       var xml = builder.buildObject(jso);
-      fs.writeFileSync(myArgs[1] + ".xml", xml);
+      fs.writeFileSync(myArgs[2] + ".xml", xml);
     }
 
     function ventunogiorni(data1, data2) {
