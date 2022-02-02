@@ -4,6 +4,7 @@ var xml2js = require("xml2js");
 var parser = new xml2js.Parser();
 
 datascelta = "2022-01-25";
+nomefile = ""; //Senza Aggiungere .xml
 
 //Carico il file
 fs.readFile(__dirname + "/update.xml", function (err, data) {
@@ -30,7 +31,7 @@ fs.readFile(__dirname + "/update.xml", function (err, data) {
     function saveIt() {
       var builder = new xml2js.Builder();
       var xml = builder.buildObject(jso);
-      fs.writeFileSync("prova.xml", xml);
+      fs.writeFileSync(nomefile + ".xml", xml);
     }
 
     function ventunogiorni(data1, data2) {
