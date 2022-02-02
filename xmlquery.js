@@ -5,7 +5,7 @@ var parser = new xml2js.Parser();
 
 datascelta = "2022-01-25";
 filexmloriginale = "update.xml";
-nomefile = ""; //Senza Aggiungere .xml
+nomefile = "prova"; //Senza Aggiungere .xml
 
 //Carico il file
 fs.readFile(filexmloriginale, function (err, data) {
@@ -13,6 +13,7 @@ fs.readFile(filexmloriginale, function (err, data) {
     jso = result; //jso rappresenta i dati json
 
     //Effettuo una modifica
+    guariti = [];
 
     for (paziente of jso["covid-19"].pazienti[0].paziente) {
       if (ventunogiorni(paziente.dataDiagnosi[0], datascelta) === true) {
@@ -23,8 +24,12 @@ fs.readFile(filexmloriginale, function (err, data) {
           terapiaDescrizione: [""],
           intubato: [""],
         });
+
+        guariti.push(paziente);
       }
     }
+
+    jso["covid-19"].pazienti[0].paziente = guariti;
 
     //Risalvo il contenuto in xml sul file prova.xml
     saveIt();
