@@ -4,10 +4,11 @@ var xml2js = require("xml2js");
 var parser = new xml2js.Parser();
 
 datascelta = "2022-01-25";
+filexmloriginale = "update.xml";
 nomefile = ""; //Senza Aggiungere .xml
 
 //Carico il file
-fs.readFile(__dirname + "/update.xml", function (err, data) {
+fs.readFile(filexmloriginale, function (err, data) {
   parser.parseString(data, function (err, result) {
     jso = result; //jso rappresenta i dati json
 
